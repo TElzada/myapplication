@@ -1,4 +1,6 @@
-package com.geeks.myapplication
+package com.geeks.myapplication.data.models
+
+import java.io.Serializable
 
 data class CarModel(
     val img: String,
@@ -7,4 +9,4 @@ data class CarModel(
     val type: String,
     val transmission: String,
     val ac: String
-)
+): Serializable

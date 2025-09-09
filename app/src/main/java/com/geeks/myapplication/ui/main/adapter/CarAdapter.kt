@@ -1,12 +1,13 @@
-package com.geeks.myapplication
+package com.geeks.myapplication.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.geeks.myapplication.data.models.CarModel
 import com.geeks.myapplication.databinding.ItemCarBinding
 
-class CarAdapter(var carList: List<CarModel>) :
+class CarAdapter(var carList: List<CarModel> , val onClick:(carModel:CarModel)->Unit) :
     RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
@@ -27,7 +28,7 @@ class CarAdapter(var carList: List<CarModel>) :
         return carList.size
     }
 
-    class CarViewHolder(private val binding: ItemCarBinding) :
+    inner class CarViewHolder(private val binding: ItemCarBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: CarModel) {
             binding.tvTitle.text = model.title
@@ -39,6 +40,9 @@ class CarAdapter(var carList: List<CarModel>) :
             Glide.with(binding.ivCar.context)
                 .load(model.img)
                 .into(binding.ivCar)
+            itemView.setOnClickListener {
+                onClick(model)
+            }
         }
     }
 }
