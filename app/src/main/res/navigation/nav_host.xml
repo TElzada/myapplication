@@ -18,6 +18,9 @@
     <fragment
         android:id="@+id/detailCarFragment"
         android:name="com.geeks.myapplication.ui.detail.DetailCarFragment"
-        android:label="fragment_detail_car"
-        tools:layout="@layout/fragment_detail_car" />
+        android:label="fragment_detail_car">
+    <argument
+        android:name="carModel"
+        app:argType="com.geeks.myapplication.data.models.CarModel" />
+    </fragment>
 </navigation>

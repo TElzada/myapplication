@@ -38,11 +38,11 @@ class MainFragment : Fragment() {
         carAdapter = CarAdapter(list, ::onClick )
         binding.rvCar.adapter = carAdapter
     }
-    fun onClick(carModel:CarModel){
-        val bundle = Bundle()
-        bundle.putParcelable(AppKey.CAR_MODEL_KEY,carModel)
-        findNavController().navigate(R.id.detailCarFragment, bundle)
+    fun onClick(carModel: CarModel) {
+        val action = MainFragmentDirections.actionMainFragmentToDetailCarFragment(carModel)
+        findNavController().navigate(action)
     }
+
 
     private fun loadData() {
         list = arrayListOf<CarModel>(
