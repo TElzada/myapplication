@@ -36,16 +36,11 @@ class MainFragment : Fragment() {
 
     private fun initView() {
         carAdapter = CarAdapter(list, ::onClick )
-        binding.rvAnimal.adapter = carAdapter
+        binding.rvCar.adapter = carAdapter
     }
     fun onClick(carModel:CarModel){
         val bundle = Bundle()
-        bundle.putSerializable(AppKey.CAR_MODEL_KEY,carModel)
-//        val detailCarFragment = DetailCarFragment()
-//        detailCarFragment.arguments = bundle
-//
-//        requireActivity().supportFragmentManager.beginTransaction().addToBackStack(null)
-//           .replace(R.id.container, detailCarFragment).commit()
+        bundle.putParcelable(AppKey.CAR_MODEL_KEY,carModel)
         findNavController().navigate(R.id.detailCarFragment, bundle)
     }
 

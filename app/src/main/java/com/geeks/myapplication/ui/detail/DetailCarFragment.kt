@@ -22,7 +22,7 @@ class DetailCarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val carModel = arguments?.getSerializable(AppKey.CAR_MODEL_KEY) as CarModel?
+        val carModel = arguments?. getParcelable(AppKey.CAR_MODEL_KEY) as CarModel?
         if(carModel!=null){
             binding.tvCar.text = carModel.title
             binding.tvShape.text = carModel.price

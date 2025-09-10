@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:id="@+id/rv_animal"
+        android:id="@+id/rv_car"
         tools:listitem="@layout/item_car"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_height="match_parent"/>
