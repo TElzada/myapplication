@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.geeks.myapplication.data.models.CarModel
 import com.geeks.myapplication.databinding.FragmentDetailCarBinding
+import com.geeks.myapplication.utils.AppKey
 
 class DetailCarFragment : Fragment() {
     private lateinit var binding: FragmentDetailCarBinding
@@ -19,5 +22,15 @@ class DetailCarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val carModel = arguments?.getSerializable(AppKey.CAR_MODEL_KEY) as CarModel?
+        if(carModel!=null){
+            binding.tvCar.text = carModel.title
+            binding.tvShape.text = carModel.price
+            Glide.with(requireContext())
+                .load(carModel.img)
+                .into(binding.ivCar)
+
+        }
+
     }
 }
