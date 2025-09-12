@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.geeks.myapplication.data.models.OnBoardModel
 import com.geeks.myapplication.databinding.ItemOnBoardBinding
-import com.geeks.myapplication.loadImg
 
 class OnBoardAdapter(private val onBoardList:List<OnBoardModel>, val onStart:()->Unit,val onSkip:()-> Unit):
     RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
@@ -32,9 +31,11 @@ class OnBoardAdapter(private val onBoardList:List<OnBoardModel>, val onStart:()-
     inner class OnBoardViewHolder(private val binding: ItemOnBoardBinding):
         RecyclerView.ViewHolder(binding.root){
         fun bind(onBoardModel: OnBoardModel){
-            binding.img.loadImg(onBoardModel.img)
+            binding.lottieAnimation.setAnimation(onBoardModel.lottieRes)
+            binding.lottieAnimation.playAnimation()
             binding.tvTitle.text = onBoardModel.title
             binding.tvDesc.text = onBoardModel.desc
+
             if ((adapterPosition) != onBoardList.size - 1) {
                 binding.btnStart.visibility = View.GONE
                 binding.tvSkip.setOnClickListener {
@@ -46,6 +47,7 @@ class OnBoardAdapter(private val onBoardList:List<OnBoardModel>, val onStart:()-
                     onStart()
                 }
             }
+
         }
     }
 }

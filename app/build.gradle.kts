@@ -57,6 +57,9 @@ dependencies {
     val navVersion = "2.9.3"
     implementation("androidx.navigation:navigation-fragment:$navVersion")
     implementation("androidx.navigation:navigation-ui:$navVersion")
+    implementation("com.airbnb.android:lottie:6.0.0")
+    implementation ("com.tbuonomo:dotsindicator:4.3")
+
 
     implementation(libs.glide)
 }

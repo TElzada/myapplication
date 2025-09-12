@@ -29,25 +29,28 @@ class OnBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         adapter = OnBoardAdapter(loadOnBoardData(),::onStartBoard, ::onSkipBoard)
         binding.vpOnBoard.adapter= adapter
+        binding.wormDotsIndicator.setViewPager2(binding.vpOnBoard)
     }
     private fun onSkipBoard(){
-        binding.vpOnBoard.currentItem = loadOnBoardData().size
+        binding.vpOnBoard.currentItem = loadOnBoardData().size-1
     }
-    private fun onStartBoard(){
-        findNavController().navigate(R.id.mainFragment)
+    private fun onStartBoard() {
+        val action = OnBoardFragmentDirections.actionOnBoardFragmentToMainFragment()
+        findNavController().navigate(action)
     }
+
     private fun loadOnBoardData():List<OnBoardModel>{
         return listOf(OnBoardModel(
             title = "Удобство",
-            img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWcauyDceOdMIIEY0iycR2j5EiVoIhDhq1A&s",
+            lottieRes = R.raw.first_animation,
             desc = "Создавайте заметки в два клика! Записывайте мысли, идеи и важные задачи мгновенно."),
             OnBoardModel(
             title = "Организация",
-            img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWcauyDceOdMIIEY0iycR2j5EiVoIhDhq1A&s",
+            lottieRes = R.raw.second_animation,
             desc = "Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время."),
             OnBoardModel(
                 title = "Синхронизация",
-                img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbWcauyDceOdMIIEY0iycR2j5EiVoIhDhq1A&s",
+                lottieRes = R.raw.third_animation,
                 desc = "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте."))
     }
 }

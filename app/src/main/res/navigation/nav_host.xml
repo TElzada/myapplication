@@ -5,6 +5,17 @@
     android:id="@+id/nav_host"
     app:startDestination="@id/onBoardFragment">
 
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.geeks.myapplication.ui.on_board.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" >
+        <action
+            android:id="@+id/action_onBoardFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/onBoardFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
@@ -23,9 +34,4 @@
         android:name="carModel"
         app:argType="com.geeks.myapplication.data.models.CarModel" />
     </fragment>
-    <fragment
-        android:id="@+id/onBoardFragment"
-        android:name="com.geeks.myapplication.ui.on_board.OnBoardFragment"
-        android:label="fragment_on_board"
-        tools:layout="@layout/fragment_on_board" />
 </navigation>
