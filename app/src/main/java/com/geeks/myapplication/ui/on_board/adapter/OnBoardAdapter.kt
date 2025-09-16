@@ -18,19 +18,17 @@ class OnBoardAdapter(private val onBoardList:List<OnBoardModel>, val onStart:()-
             false))
     }
 
-    override fun onBindViewHolder(
-        holder: OnBoardViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: OnBoardViewHolder, position: Int) {
         holder.bind(onBoardList[position])
     }
+
 
     override fun getItemCount() = onBoardList.size
 
 
     inner class OnBoardViewHolder(private val binding: ItemOnBoardBinding):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(onBoardModel: OnBoardModel){
+        fun bind(onBoardModel: OnBoardModel ){
             binding.lottieAnimation.setAnimation(onBoardModel.lottieRes)
             binding.lottieAnimation.playAnimation()
             binding.tvTitle.text = onBoardModel.title

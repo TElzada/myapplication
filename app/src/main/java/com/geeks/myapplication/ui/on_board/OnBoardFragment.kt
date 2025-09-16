@@ -11,6 +11,7 @@ import com.geeks.myapplication.data.models.OnBoardModel
 import com.geeks.myapplication.databinding.FragmentMainBinding
 import com.geeks.myapplication.databinding.FragmentOnBoardBinding
 import com.geeks.myapplication.ui.on_board.adapter.OnBoardAdapter
+import com.geeks.myapplication.utils.Prefs
 
 class OnBoardFragment : Fragment() {
 
@@ -35,7 +36,8 @@ class OnBoardFragment : Fragment() {
         binding.vpOnBoard.currentItem = loadOnBoardData().size-1
     }
     private fun onStartBoard() {
-        val action = OnBoardFragmentDirections.actionOnBoardFragmentToMainFragment()
+        Prefs.setOnBoardShown(requireContext(), true)
+        val action = OnBoardFragmentDirections.actionOnBoardFragmentToNotesFragment()
         findNavController().navigate(action)
     }
 
@@ -53,4 +55,6 @@ class OnBoardFragment : Fragment() {
                 lottieRes = R.raw.third_animation,
                 desc = "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте."))
     }
+
+
 }
